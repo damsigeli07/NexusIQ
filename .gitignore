@@ -1,0 +1,33 @@
+# Environment — never commit secrets
+.env
+
+# Go
+go-api/vendor/
+*.exe
+*.test
+*.out
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+python-ml/__pycache__/
+python-ml/.venv/
+*.egg-info/
+
+# Uploads — user files don't belong in git
+uploads/
+
+# Docker volumes
+postgres_data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
