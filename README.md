@@ -15,7 +15,7 @@ Built with a Go microservice backbone, a Python ML pipeline, and a pgvector simi
 | API Gateway | Go 1.23 + Gin |
 | ML Service | Python 3.12 + FastAPI + LangChain |
 | Vector DB | PostgreSQL 16 + pgvector |
-| Embeddings + LLM | Google Gemini API (text-embedding-004) |
+| Embeddings + LLM | Google Gemini API (gemini-embedding-001) |
 | Cache + Rate Limiting | Redis 7 |
 | Frontend | React + TypeScript + Tailwind CSS *(Day 4)* |
 | Containerisation | Docker + Docker Compose |
