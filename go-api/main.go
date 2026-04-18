@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 
-	"github.com/damsigeli07/nexusiq/internal/config"
-	"github.com/damsigeli07/nexusiq/internal/db"
-	"github.com/damsigeli07/nexusiq/internal/handlers"
-	"github.com/damsigeli07/nexusiq/internal/middleware"
+	"github.com/damsigeli07/NexusIQ/internal/config"
+	"github.com/damsigeli07/NexusIQ/internal/db"
+	"github.com/damsigeli07/NexusIQ/internal/handlers"
+	"github.com/damsigeli07/NexusIQ/internal/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,6 +18,7 @@ func main() {
 	defer dbConn.Close()
 
 	redisClient := db.ConnectRedis(cfg)
+	defer redisClient.Close()
 
 	r := gin.Default()
 
@@ -43,7 +44,7 @@ func main() {
 	api.Use(middleware.JWTAuth(cfg))
 	{
 		api.GET("/documents", handlers.ListDocuments(dbConn))
-		api.POST("/documents", handlers.UploadDocument(dbConn))
+		api.POST("/documents", handlers.UploadDocument(dbConn, cfg))
 		api.DELETE("/documents/:id", handlers.DeleteDocument(dbConn))
 
 		api.GET("/chat", handlers.ChatWebSocket(dbConn, redisClient, cfg))
