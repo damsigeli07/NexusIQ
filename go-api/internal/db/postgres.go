@@ -5,7 +5,7 @@ import (
     "log"
     "github.com/jackc/pgx/v5/pgxpool"
     "github.com/redis/go-redis/v9"
-    "github.com/damsigeli07/nexusiq/internal/config"
+    "github.com/damsigeli07/NexusIQ/internal/config"
 )
 
 func Connect(cfg *config.Config) *pgxpool.Pool {
