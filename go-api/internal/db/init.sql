@@ -34,14 +34,15 @@ CREATE TABLE chunks (
     document_id UUID NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
     tenant_id UUID NOT NULL REFERENCES tenants(id) ON DELETE CASCADE,
     content TEXT NOT NULL,
-    embedding vector(1536),   -- OpenAI/Gemini embedding dimension
+    embedding vector(3072),   -- Gemini embedding dimension for models/gemini-embedding-001
     chunk_index INTEGER NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- This index is what makes similarity search fast
-CREATE INDEX ON chunks USING ivfflat (embedding vector_cosine_ops)
-    WITH (lists = 100);
+-- If using higher-dimensional Gemini embeddings, a vector index may not be supported.
+-- For now we rely on sequential search on chunks for similarity retrieval.
+--CREATE INDEX ON chunks USING ivfflat (embedding vector_cosine_ops)
+--    WITH (lists = 100);
 
 CREATE TABLE chat_history (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
