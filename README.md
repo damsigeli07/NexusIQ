@@ -77,12 +77,3 @@ curl http://localhost:8000/health
 
 ---
 
-## Project Status
-
-- [x] Day 1 — Docker Compose infra, PostgreSQL schema with pgvector, Go skeleton, Redis
-- [x] Day 2 — JWT auth, multi-tenant document upload, LangChain chunking, Gemini embeddings, pgvector storage
-- [ ] Day 3 — WebSocket streaming, LLM response generation
-- [ ] Day 4 — React + TypeScript frontend
-- [ ] Day 5 — Cloud deployment + live demo
-
----
